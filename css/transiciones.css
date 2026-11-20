@@ -1,0 +1,177 @@
+.logotipo,
+.enlaces-navegacion a,
+.enlace-texto,
+.enlace-correo,
+.enlace-telefono,
+.boton,
+.tarjeta-habilidad,
+.tarjeta-proyecto,
+.tarjeta-trayectoria,
+.retrato,
+.vista-previa-proyecto,
+.etiquetas-proyecto span,
+.campo-formulario input,
+.campo-formulario textarea {
+    transition: 320ms cubic-bezier(.2, .75, .25, 1);
+}
+
+.logotipo:hover,
+.logotipo:focus-visible {
+    color: #52ffb6;
+    text-shadow: 0 0 18px rgba(82, 255, 182, 0.38);
+}
+
+.enlaces-navegacion a,
+.enlace-texto,
+.enlace-correo,
+.enlace-telefono {
+    transition-property: color, background-color, border-color, transform;
+}
+
+.enlaces-navegacion a:hover,
+.enlaces-navegacion a:focus-visible {
+    background: rgba(0, 237, 145, 0.12);
+    box-shadow: inset 0 -2px 0 var(--verde);
+    transform: translateY(-2px);
+}
+
+.boton {
+    transition-property: background-color, color, transform, box-shadow;
+}
+
+.boton:hover,
+.boton:focus-visible {
+    background: #52ffb6;
+    box-shadow: 0 10px 24px rgba(0, 237, 145, 0.28);
+    transform: translateY(-4px) scale(1.015);
+}
+
+.boton:active,
+.enlaces-navegacion a:active,
+.enlace-texto:active,
+.enlace-correo:active,
+.enlace-telefono:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.tarjeta-habilidad,
+.tarjeta-proyecto,
+.tarjeta-trayectoria {
+    transition-property: transform, border-color, box-shadow;
+}
+
+.tarjeta-habilidad:hover,
+.tarjeta-proyecto:hover,
+.tarjeta-trayectoria:hover {
+    border-color: #52ffb6;
+    box-shadow: 0 16px 34px rgba(0, 237, 145, 0.16);
+    transform: translateY(-8px);
+}
+
+.retrato,
+.vista-previa-proyecto {
+    transition-property: border-color, box-shadow;
+}
+
+.retrato:hover,
+.vista-previa-proyecto:hover {
+    border-color: #52ffb6;
+    box-shadow: 0 12px 26px rgba(0, 237, 145, 0.14);
+}
+
+.etiquetas-proyecto span {
+    transition-property: color, background-color, transform;
+}
+
+.tarjeta-proyecto:hover .etiquetas-proyecto span {
+    color: var(--verde);
+    background: #1f3533;
+    transform: translateY(-2px);
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+    transition-property: border-color, background-color, box-shadow;
+}
+
+.campo-formulario input:hover,
+.campo-formulario textarea:hover {
+    border-color: #4a7770;
+}
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+    border-color: var(--verde);
+    background: #0d181b;
+    box-shadow: 0 0 0 4px rgba(0, 237, 145, 0.12);
+}
+
+.tarjeta-perfil {
+    animation: enter-from-left 1200ms ease-out both;
+}
+
+.contenido-presentacion {
+    animation: enter-from-right 1200ms 180ms ease-out both;
+}
+
+@keyframes enter-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-56px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes enter-from-right {
+    from {
+        opacity: 0;
+        transform: translateX(56px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@supports (animation-timeline: view()) {
+    .presentacion,
+    .seccion-contenido,
+    .seccion-contacto {
+        animation: fly-up-on-exit linear both;
+        animation-timeline: view();
+        animation-range: exit 0% exit 100%;
+    }
+
+    @keyframes fly-up-on-exit {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateY(-90px);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+
+    .tarjeta-perfil,
+    .contenido-presentacion,
+    .presentacion,
+    .seccion-contenido,
+    .seccion-contacto {
+        animation: none;
+    }
+}
